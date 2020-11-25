@@ -82,6 +82,7 @@ impl Encoder {
     }
 
     pub fn end<B>(&self) -> Result<Option<EncodedBuf<B>>, NotEof> {
+        info!("check end: {:?}", self);
         match self.kind {
             Kind::Length(0) => Ok(None),
             Kind::Chunked => Ok(Some(EncodedBuf {
